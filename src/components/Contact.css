@@ -108,8 +108,12 @@
 }
 
 @media (max-width: 968px) {
-    .contact-container {
+    .contact-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
+    }
+
+    .contact-form-container {
+        padding: 2rem;
     }
 }
