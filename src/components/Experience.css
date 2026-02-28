@@ -50,5 +50,23 @@
 @media (max-width: 768px) {
     .experience-list {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .experience-card {
+        padding: 1.5rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .company-name {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .description {
+        font-size: 0.95rem;
     }
 }
