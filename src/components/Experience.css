@@ -1,0 +1,55 @@
+.experience {
+    position: relative;
+    z-index: 2;
+    justify-content: center;
+
+}
+
+.experience-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+    padding: 1rem 0;
+    justify-content: center;
+    margin-left: 180px;
+    width: 70%;
+}
+
+.experience-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+}
+
+.company-name {
+    font-size: 1.1rem;
+    color: var(--accent-primary);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.duration {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.description {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 768px) {
+    .experience-list {
+        grid-template-columns: 1fr;
+    }
+}
