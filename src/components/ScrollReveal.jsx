@@ -24,7 +24,7 @@ const ScrollReveal = ({ children, direction = 'up', delay = 0, duration = 0.8, d
             className={className}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
+            viewport={{ once: false, margin: "-100px" }}
             variants={variants}
         >
             {children}

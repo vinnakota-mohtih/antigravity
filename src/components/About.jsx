@@ -8,10 +8,9 @@ const About = () => {
             <div className="container about-container">
                 <ScrollReveal direction="right" className="about-image-wrapper">
                     <div className="about-image glass">
-                        {/* Placeholder for Profile Image */}
-                        <div className="image-placeholder">
-                            <span className="gradient-text">PROFILE</span>
-                        </div>
+                        {
+                            <img src="m.png" alt="" />
+                        }
                     </div>
                 </ScrollReveal>
                 <div className="about-content">

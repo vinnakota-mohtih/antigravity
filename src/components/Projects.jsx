@@ -30,7 +30,7 @@ const Projects = () => {
         {
             title: "AIQ-MAIL",
             category: "Hybrid Web/AI",
-            description: "Email security site using Quantum Computing, Blockchain & AI to enhance mail security. Tech: Python (Django), AI, Blockchain, Q#."
+            description: "Email security site using Quantum Computing, Blockchain & AI to enhance mail security. Tech: Python, AI, Blockchain, Q#."
         },
         {
             title: "HEART RATE MONITORING SYSTEM",
