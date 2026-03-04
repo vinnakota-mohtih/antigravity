@@ -1,5 +1,6 @@
 import React from 'react';
 import './Experience.css';
+import ScrollReveal from './ScrollReveal';
 
 const experiences = [
     {
@@ -16,19 +17,23 @@ const Experience = () => {
     return (
         <section id="experience" className="experience">
             <div className="container">
-                <h1 className="section-title">Work Experience</h1>
+                <ScrollReveal>
+                    <h1 className="section-title">Work Experience</h1>
+                </ScrollReveal>
                 <div className="experience-list">
-                    {experiences.map((exp) => (
-                        <div key={exp.id} className="experience-card glass">
-                            <div className="card-header">
-                                <h2>{exp.role}</h2>
-                                <span className="company-name">{exp.company}</span>
+                    {experiences.map((exp, i) => (
+                        <ScrollReveal key={exp.id} delay={i * 0.2}>
+                            <div className="experience-card glass">
+                                <div className="card-header">
+                                    <h2>{exp.role}</h2>
+                                    <span className="company-name">{exp.company}</span>
+                                </div>
+                                <div className="card-body">
+                                    <p className="duration">{exp.duration}</p>
+                                    <p className="description">{exp.description}</p>
+                                </div>
                             </div>
-                            <div className="card-body">
-                                <p className="duration">{exp.duration}</p>
-                                <p className="description">{exp.description}</p>
-                            </div>
-                        </div>
+                        </ScrollReveal>
                     ))}
                 </div>
             </div>

@@ -1,25 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800&display=swap');
 
 :root {
-  /* Color Palette - Deep Dark Blue with Liquid Accents */
-  --bg-primary: #030014;
-  --bg-secondary: #050816;
-  --bg-tertiary: #0f172a;
+  /* New Color Palette - Deep Dark Blue Theme */
+  --bg-primary: #000B18;
+  --bg-secondary: #001D3D;
+  --bg-tertiary: #003566;
 
-  --accent-primary: #3b82f6;
-  --accent-secondary: #6366f1;
-  --accent-tertiary: #a855f7;
+  --accent-primary: #0059B3;
+  --accent-secondary: #007FFF;
+  --accent-tertiary: #3399FF;
   --accent-success: #10b981;
 
   --text-primary: #ffffff;
   --text-secondary: #94a3b8;
   --text-muted: #64748b;
 
-  --border-subtle: rgba(255, 255, 255, 0.15);
+  --border-subtle: rgba(255, 255, 255, 0.1);
   --glass-bg: rgba(255, 255, 255, 0.03);
-  --glass-border: rgba(59, 130, 246, 0.3);
+  --glass-border: rgba(0, 89, 179, 0.4);
   /* Darker blue/purple tint */
-  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
 
   /* Typography */
   --font-main: 'Inter', system-ui, -apple-system, sans-serif;
