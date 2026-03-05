@@ -20,6 +20,8 @@
     border: 1px solid var(--border-subtle);
     transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
     align-items: center;
+    width: 350px;
+    height: 450px;
 
 }
 

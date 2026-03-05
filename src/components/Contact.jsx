@@ -1,8 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Contact.css';
 import ScrollReveal from './ScrollReveal';
 
 const Contact = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [status, setStatus] = useState({
+        loading: false,
+        success: false,
+        error: null
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus({ loading: true, success: false, error: null });
+
+        try {
+            const response = await fetch('http://localhost:5000/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setStatus({ loading: false, success: true, error: null });
+                setFormData({ name: '', email: '', message: '' });
+                setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
+            } else {
+                const data = await response.json();
+                throw new Error(data.error || 'Something went wrong');
+            }
+        } catch (err) {
+            setStatus({ loading: false, success: false, error: err.message });
+        }
+    };
+
     return (
         <section id="contact" className="contact">
             <div className="container">
@@ -38,22 +83,54 @@ const Contact = () => {
                     </div>
 
                     <ScrollReveal direction="left" delay={0.3} className="contact-form-container glass">
-                        <form className="contact-form">
+                        <form className="contact-form" onSubmit={handleSubmit}>
                             <div className="form-group">
                                 <label>Name</label>
-                                <input type="text" placeholder="Your Name" />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    placeholder="Your Name"
+                                    value={formData.name}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className="form-group">
                                 <label>Email</label>
-                                <input type="email" placeholder="Your Email" />
+                                <input
+                                    type="email"
+                                    name="email"
+                                    placeholder="Your Email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    required
+                                />
                             </div>
                             <div className="form-group">
                                 <label>Message</label>
-                                <textarea placeholder="Your Message" rows="5"></textarea>
+                                <textarea
+                                    name="message"
+                                    placeholder="Your Message"
+                                    rows="5"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
-                            <button type="submit" className="btn-primary" onClick={(e) => e.preventDefault()}>
-                                Send Message
+                            <button
+                                type="submit"
+                                className="btn-primary"
+                                disabled={status.loading}
+                            >
+                                {status.loading ? 'Sending...' : 'Send Message'}
                             </button>
+
+                            {status.success && (
+                                <p className="status-message success">Message sent successfully!</p>
+                            )}
+                            {status.error && (
+                                <p className="status-message error">{status.error}</p>
+                            )}
                         </form>
                     </ScrollReveal>
                 </div>
