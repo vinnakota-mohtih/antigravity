@@ -26,6 +26,8 @@ const Contact = () => {
         e.preventDefault();
         setStatus({ loading: true, success: false, error: null });
 
+        console.log('Submitting form with data:', formData);
+
         try {
             const response = await fetch('/api/contact', {
                 method: 'POST',
@@ -35,16 +37,28 @@ const Contact = () => {
                 body: JSON.stringify(formData),
             });
 
+            console.log('Server response status:', response.status);
+
             if (response.ok) {
+                console.log('Message sent successfully');
                 setStatus({ loading: false, success: true, error: null });
                 setFormData({ name: '', email: '', message: '' });
                 setTimeout(() => setStatus(prev => ({ ...prev, success: false })), 5000);
             } else {
-                const data = await response.json();
-                throw new Error(data.error || 'Something went wrong');
+                const data = await response.json().catch(() => ({}));
+                console.error('Server error response:', data);
+                throw new Error(data.error || `Server error: ${response.status}`);
             }
         } catch (err) {
-            setStatus({ loading: false, success: false, error: err.message });
+            console.error('Fetch error:', err);
+            // Provide a more user-friendly error message
+            let errorMessage = 'Something went wrong. Please try again.';
+            if (err.name === 'TypeError' && err.message === 'Failed to fetch') {
+                errorMessage = 'Connection error. Please check your internet or try again later.';
+            } else if (err.message) {
+                errorMessage = err.message;
+            }
+            setStatus({ loading: false, success: false, error: errorMessage });
         }
     };
 
